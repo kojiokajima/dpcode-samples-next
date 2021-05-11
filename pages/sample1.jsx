@@ -1,9 +1,15 @@
-import React from 'react'
-import {Hero, Footer} from '../components/index'
-import {Typography} from '@material-ui/core'
+import React from "react";
+import { Hero, Footer } from "../components/index";
+import { Typography } from "@material-ui/core";
 
-import {makeStyles} from '@material-ui/core/styles'
-import {MyContainer, MyContentTitle, MyContentContainer} from '../components/UIkit/index'
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  MyContainer,
+  MyContentTitle,
+  MyContentContainer,
+} from "../components/UIkit/index";
+
+import { getRandomCoffee } from "../lib/test";
 
 // 1440 * 900
 // #28282A
@@ -20,15 +26,14 @@ const useStyles = makeStyles({
     fontSize: "130%",
     color: "#28282A",
 
-    ['@media (max-width: 375px)']: {
+    ["@media (max-width: 375px)"]: {
       padding: "0 4vw",
-    }
+    },
+  },
+});
 
-  }
-})
-
-const SamplePage1 = () => {
-  const classes = useStyles()
+const SamplePage1 = (props) => {
+  const classes = useStyles();
 
   return (
     <MyContainer>
@@ -36,12 +41,30 @@ const SamplePage1 = () => {
       <MyContentContainer>
         <MyContentTitle title={"TITLE (proxima nova medium)"} />
         <Typography className={classes.paragraph} variant="subtitle2">
-          sParagraoh (Open Sans Regular) Our mission is to provide high-quality computer science education that lasts forever. We truly believe that everyone in the world will have the opportunity to attain an excellent education that every top 1% software engineer needs to know for their life-long career. We do understand that there are tons of online tutorials about "Coding". Here in DPCode Academy, we do not offer any type of "get-skilled-quick" schemes which ultimately waste your time. We are here to train the next top 1% software engineers.
+          sParagraoh (Open Sans Regular) Our mission is to provide high-quality
+          computer science education that lasts forever. We truly believe that
+          everyone in the world will have the opportunity to attain an excellent
+          education that every top 1% software engineer needs to know for their
+          life-long career. We do understand that there are tons of online
+          tutorials about "Coding". Here in DPCode Academy, we do not offer any
+          type of "get-skilled-quick" schemes which ultimately waste your time.
+          We are here to train the next top 1% software engineers.
         </Typography>
+        <div style={{ color: "orange" }}>{props.blend_name}</div>
       </MyContentContainer>
       {/* <Footer /> */}
     </MyContainer>
-  )
-}
+  );
+};
 
-export default SamplePage1
+export const getStaticProps = async () => {
+  const coffee = await getRandomCoffee();
+
+  return {
+    props: {
+      ...coffee,
+    },
+  };
+};
+
+export default SamplePage1;

@@ -4,8 +4,8 @@ import { Button } from '@material-ui/core'
 import Link from 'next/link'
 
 function MyApp({ Component, pageProps }) {
-  console.log("Cmponent: ", Component);
-  console.log("pageProps: ", pageProps);
+  // console.log("Cmponent: ", Component);
+  // console.log("pageProps: ", pageProps);
   return (
     <>
       <Header />
