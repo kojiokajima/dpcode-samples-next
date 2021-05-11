@@ -7,6 +7,7 @@ import {
   MyContainer,
   MyContentTitle,
   MyContentContainer,
+  MyButton,
 } from "../components/UIkit/index";
 
 import { getRandomCoffee } from "../lib/test";
@@ -30,6 +31,15 @@ const useStyles = makeStyles({
       padding: "0 4vw",
     },
   },
+
+  temporary: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "42.2vw",
+    height: "30.9vw",
+    backgroundColor: "#06C8A1"
+  }
 });
 
 const SamplePage1 = (props) => {
@@ -50,21 +60,24 @@ const SamplePage1 = (props) => {
           type of "get-skilled-quick" schemes which ultimately waste your time.
           We are here to train the next top 1% software engineers.
         </Typography>
-        <div style={{ color: "orange" }}>{props.blend_name}</div>
+        {/* <div style={{ color: "orange" }}>{props.blend_name}</div> */}
       </MyContentContainer>
       {/* <Footer /> */}
+      <div className={classes.temporary}>
+        <MyButton label={"sample"} isContained={false} isExLarge={true} />
+      </div>
     </MyContainer>
   );
 };
 
-export const getStaticProps = async () => {
-  const coffee = await getRandomCoffee();
+// export const getStaticProps = async () => {
+//   const coffee = await getRandomCoffee();
 
-  return {
-    props: {
-      ...coffee,
-    },
-  };
-};
+//   return {
+//     props: {
+//       ...coffee,
+//     },
+//   }
+// };
 
 export default SamplePage1;

@@ -1,12 +1,6 @@
 import React from "react";
 import { Card, Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-// import BlackLogo from "../assets/black_logo.svg";
-// import BlackLogo from "../assets/black_logo.svg";
-// import Facebook from "../assets/facebook.svg";
-// import Youtube from "../assets/youtube.svg";
-// import Instagram from "../assets/instagram.svg";
-import Image from "next/image";
 import BlackLogo from "../assets/black_logo.svg";
 import Facebook from "../assets/facebook.svg";
 import Youtube from "../assets/youtube.svg";
@@ -33,7 +27,7 @@ const useStyles = makeStyles({
     },
   },
   footerLeft: {
-    width: "8.89%",
+    width: "8.89vw",
     padding: 0,
     margin: 0,
 

@@ -96,8 +96,9 @@ const MyCard = () => {
           programming
         </Typography>
         <CardActions className={classes.btnArea}>
-          <MyButton label={"Learn More"} isContained={false} isLarge={false} />
-          <MyButton label={"Apply Now"} isContained={true} isLarge={false} />
+          {/* <MyButton label={"Learn More"} isContained={false} isLarge={false} /> */}
+          <MyButton label={"Learn More"} isContained={false} />
+          <MyButton label={"Apply Now"} isContained={true} />
         </CardActions>
       </CardContent>
     </Card>
