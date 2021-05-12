@@ -8,11 +8,12 @@ import Image from "next/image";
 // #28282A
 // #06C8A1
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: "17.78vw",
-    ["@media (max-width: 375px)"]: {
-      height: "50vw",
+    // ["@media (max-width: 375px)"]: {
+    [theme.breakpoints.down("sm")]: {
+      height: "40vw",
     },
   },
   paper: {
@@ -25,11 +26,12 @@ const useStyles = makeStyles({
   },
   logo: {
     width: "17.71vw",
-    ["@media (max-width: 375px)"]: {
+    // ["@media (max-width: 375px)"]: {
+    [theme.breakpoints.down("sm")]: {
       width: "32vw",
     },
   },
-});
+}));
 
 const Hero = () => {
   const classes = useStyles();

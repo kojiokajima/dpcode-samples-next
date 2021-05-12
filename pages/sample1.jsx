@@ -38,8 +38,8 @@ const useStyles = makeStyles({
     alignItems: "center",
     width: "42.2vw",
     height: "30.9vw",
-    backgroundColor: "#06C8A1"
-  }
+    backgroundColor: "#06C8A1",
+  },
 });
 
 const SamplePage1 = (props) => {

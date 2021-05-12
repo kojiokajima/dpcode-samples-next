@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     padding: "2.22vw 4.44vw",
 
-    ["@media (max-width: 375px)"]: {
+    [theme.breakpoints.down("sm")]: {
       padding: "4vw",
       height: "20vw",
     },
@@ -44,7 +44,10 @@ const useStyles = makeStyles((theme) => ({
       "& h5": {
         fontSize: "2vw",
       },
-      ["@media (max-width: 375px)"]: {
+      "& img": {
+        width: "4.72vw",
+      },
+      [theme.breakpoints.down("sm")]: {
         width: "100%",
         justifyContent: "space-between",
         "& h5": {
@@ -53,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
+        },
+        "& img": {
+          width: "16vw",
         },
       },
     },
@@ -71,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: "1.2vw",
       },
 
-      ["@media (max-width: 375px)"]: {
+      [theme.breakpoints.down("sm")]: {
         display: "none",
       },
     },
@@ -83,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
   menu: {
     display: "none",
     fontSize: "10vw",
-    ["@media (max-width: 375px)"]: {
+    [theme.breakpoints.down("sm")]: {
       display: "inherit",
     },
   },

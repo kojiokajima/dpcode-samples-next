@@ -1,19 +1,32 @@
-import React from 'react'
-import {Hero, Header} from '../components/index'
-import {Cards} from '../components/index'
-import {MyContainer, MyContentContainer, MyContentTitle} from '../components/UIkit/index'
+import React, {useEffect} from "react";
+import { Hero, Header } from "../components/index";
+import { Cards } from "../components/index";
+import {
+  MyContainer,
+  MyContentContainer,
+  MyContentTitle,
+} from "../components/UIkit/index";
 
 const SamplePage2 = () => {
+  // window.onscroll　= () => {
+  //   console.log("YOYOYO");
+  // }
+  // useEffect(() => {
+  //   window
+  // }, [])
+  // window.addEventListener("scroll", () => {
+  //   console.log("SCROLL");
+  // });
 
   return (
-    <MyContainer>
+    <MyContainer >
       <Hero />
       <MyContentContainer>
         <MyContentTitle title={"Courses"} />
         <Cards />
-    </MyContentContainer>
+      </MyContentContainer>
     </MyContainer>
-  )
-}
+  );
+};
 
-export default SamplePage2
+export default SamplePage2;
