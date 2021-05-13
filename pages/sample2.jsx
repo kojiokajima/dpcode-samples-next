@@ -19,7 +19,7 @@ const SamplePage2 = () => {
   // });
 
   return (
-    <MyContainer >
+    <MyContainer>
       <Hero />
       <MyContentContainer>
         <MyContentTitle title={"Courses"} />
