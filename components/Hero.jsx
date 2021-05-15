@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: "17.78vw",
     // ["@media (max-width: 375px)"]: {
-    [theme.breakpoints.down("sm")]: {
+    // [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       height: "40vw",
     },
   },
@@ -27,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     width: "17.71vw",
     // ["@media (max-width: 375px)"]: {
-    [theme.breakpoints.down("sm")]: {
+    // [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       width: "32vw",
     },
   },

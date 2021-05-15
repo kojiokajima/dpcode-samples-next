@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     padding: "2.22vw 4.44vw",
 
-    [theme.breakpoints.down("sm")]: {
+    // [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       padding: "4vw",
       height: "20vw",
     },
@@ -47,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
       "& img": {
         width: "4.72vw",
       },
-      [theme.breakpoints.down("sm")]: {
+      // [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "100%",
         justifyContent: "space-between",
         "& h5": {
@@ -77,7 +79,8 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: "1.2vw",
       },
 
-      [theme.breakpoints.down("sm")]: {
+      // [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("xs")]: {
         display: "none",
       },
     },
@@ -89,7 +92,8 @@ const useStyles = makeStyles((theme) => ({
   menu: {
     display: "none",
     fontSize: "10vw",
-    [theme.breakpoints.down("sm")]: {
+    // [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       display: "inherit",
     },
   },
