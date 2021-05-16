@@ -5,6 +5,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import WhiteLogo from "../assets/white_logo.svg";
 import { AccountCircle, Menu } from "@material-ui/icons";
+import {signIn} from 'next-auth/client'
 import Image from "next/image";
 // 1440 * 900
 // #28282A
@@ -101,6 +102,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const classes = useStyles();
+  const g = 'google'
 
   return (
     <AppBar className={classes.root} position="static" color="primary">
@@ -121,13 +123,16 @@ const Header = () => {
           <li>
             {/* <Link href="/courses"> */}
             {/* <Button className={classes.btn} style={{ color: "#FFF" }}> */}
-            COURSES
+            {/* <a href={`https://${g}.com`} target="_blank"> */}
+            <a href={`https://${process.env.COGNITO_DOMAIN}/oauth2/authorize?identity_provider=Google&response_type=code&client_id=${process.env.COGNITO_CLIENT_ID}&scope=openid%20email&redirect_uri=http://localhost:3000/`}>
+              COURSES
+            </a>
             {/* </Button> */}
             {/* </Link> */}
           </li>
-          <li>
+          <li onClick={() => signIn('cognito')}>
             {/* <Button className={classes.btn}> */}
-            MY PAGE
+            SIGN IN
             {/* </Button> */}
           </li>
           {/* <li> */}

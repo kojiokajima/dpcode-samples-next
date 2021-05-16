@@ -1,6 +1,7 @@
 import React from 'react'
 import '../styles/globals.css'
 import { Header, Footer } from '../components/index'
+import { Provider } from 'next-auth/client'
 import { Button } from '@material-ui/core'
 import Link from 'next/link'
 
@@ -10,8 +11,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+    <Provider session={pageProps.session}>
       <Header />
-      
+
       <Component {...pageProps} />
       {/* <Header /> */}
       <Footer />
@@ -33,6 +35,7 @@ function MyApp({ Component, pageProps }) {
         </Link>
 
       </div>
+    </Provider>
     </>
   )
 }
