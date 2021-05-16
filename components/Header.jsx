@@ -110,7 +110,7 @@ const getCurrentSession = async() => {
 const Header = () => {
   const classes = useStyles();
   const [session, loading] = useSession()
-  console.log("SESSION IN HEADER: ", session);
+  console.log("SESSION: ", session);
 
 
   // useEffect(() => {
@@ -133,11 +133,11 @@ const Header = () => {
             {/* </Button> */}
             {/* </Link> */}
           </li>
-          <li onClick={() => signIn('cognito', {email})}>
+          <li onClick={() => signIn('cognito')}>
             {/* <Link href="/courses"> */}
             {/* <Button className={classes.btn} style={{ color: "#FFF" }}> */}
             {/* <a href={`https://${g}.com`} target="_blank"> */}
-            {/* <a href={`https://${process.env.COGNITO_DOMAIN}/oauth2/authorize?identity_provider=Google&response_type=code&client_id=${process.env.COGNITO_CLIENT_ID}&scope=openid%20email&redirect_uri=http://localhost:3000/`}> */}
+            {/* <a href={`https://${process.env.COGNITO_DOMAIN}/oauth2/authorize?identity_provider=Google&response_type=code&client_id=${process.env.COGNITO_CLIENT_ID}&scope=openid%20email&redirect_uri=http://localhost:3000/api/auth/callback/cognito`}> */}
               COURSES
             {/* </a> */}
             {/* </Button> */}
@@ -145,7 +145,7 @@ const Header = () => {
           </li>
           {
             session ?
-            (<li onClick={() => signOut('cognito')}>
+            (<li onClick={() => signOut()}>
               {/* <Button className={classes.btn}> */}
               SIGN OUT
               {/* </Button> */}

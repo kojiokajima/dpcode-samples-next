@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 const MyButton = (props) => {
   const classes = useStyles(props);
 
-  return <Button className={classes.root}>{props.label}</Button>;
+  return <Button className={classes.root} onClick={props.onClick}>{props.label}</Button>;
 };
 
 export default MyButton;
