@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Container from "@material-ui/core/Container";
@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import WhiteLogo from "../assets/white_logo.svg";
 import { AccountCircle, Menu } from "@material-ui/icons";
 import {signIn} from 'next-auth/client'
+import { signOut, useSession, getSession } from 'next-auth/client'
+
 import Image from "next/image";
 // 1440 * 900
 // #28282A
@@ -100,9 +102,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const getCurrentSession = async() => {
+  const cur = await getSession()
+  console.log("CURRR: ", cur);
+}
+
 const Header = () => {
   const classes = useStyles();
-  const g = 'google'
+  const [session, loading] = useSession()
+  console.log("SESSION IN HEADER: ", session);
+
+
+  // useEffect(() => {
+  //   getCurrentSession()
+  // }, [])
 
   return (
     <AppBar className={classes.root} position="static" color="primary">
@@ -120,21 +133,31 @@ const Header = () => {
             {/* </Button> */}
             {/* </Link> */}
           </li>
-          <li>
+          <li onClick={() => signIn('cognito', {email})}>
             {/* <Link href="/courses"> */}
             {/* <Button className={classes.btn} style={{ color: "#FFF" }}> */}
             {/* <a href={`https://${g}.com`} target="_blank"> */}
-            <a href={`https://${process.env.COGNITO_DOMAIN}/oauth2/authorize?identity_provider=Google&response_type=code&client_id=${process.env.COGNITO_CLIENT_ID}&scope=openid%20email&redirect_uri=http://localhost:3000/`}>
+            {/* <a href={`https://${process.env.COGNITO_DOMAIN}/oauth2/authorize?identity_provider=Google&response_type=code&client_id=${process.env.COGNITO_CLIENT_ID}&scope=openid%20email&redirect_uri=http://localhost:3000/`}> */}
               COURSES
-            </a>
+            {/* </a> */}
             {/* </Button> */}
             {/* </Link> */}
           </li>
-          <li onClick={() => signIn('cognito')}>
-            {/* <Button className={classes.btn}> */}
-            SIGN IN
-            {/* </Button> */}
-          </li>
+          {
+            session ?
+            (<li onClick={() => signOut('cognito')}>
+              {/* <Button className={classes.btn}> */}
+              SIGN OUT
+              {/* </Button> */}
+            </li>)
+            :
+            (<li onClick={() => signIn('cognito')}>
+              {/* <Button className={classes.btn}> */}
+              SIGN IN
+              {/* </Button> */}
+            </li>)
+
+          }
           {/* <li> */}
           {/* <Button className={classes.btn}> */}
           <AccountCircle />
