@@ -110,7 +110,7 @@ const getCurrentSession = async() => {
 const Header = () => {
   const classes = useStyles();
   const [session, loading] = useSession()
-  console.log("SESSION: ", session);
+  // console.log("SESSION: ", session);
 
 
   // useEffect(() => {
