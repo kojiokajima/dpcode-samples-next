@@ -5,17 +5,17 @@ import { getProfileInfo } from "../lib/test";
 import { useEffect } from "react";
 import axios from "axios";
 
-export default function Home({profileData}) {
+export default function Home(props) {
   const [session, loading] = useSession();
   console.log("INDEX.JS  SESSION: ", session);
 
   useEffect(() => {
-    console.log("INDEX.JS  USEEFFECT: ", profileData);
-    if(profileData){
-      console.log("INDEX.JS  PROFILE DATA: ", profileData);
-    } else {
-      console.log("INDEX.JS  NONE");
-    }
+    console.log("HELLO PROFILEDATA IS ", props)
+    // if(profileData){
+    //   console.log("INDEX.JS  PROFILE DATA: ", profileData);
+    // } else {
+    //   console.log("INDEX.JS  NONE");
+    // }
   }, [session])
 
   // const getProfileData = async() => {
@@ -51,10 +51,11 @@ export default function Home({profileData}) {
       <br />
       <SignUpButton label={"LINE"} />
       {
-        profileData ? (
-          // <div>HELLO {profileData.na}</div>
-          <span>ko</span>
-        ) : (
+        props.username ? (
+          <div>HELLO {props.given_name}</div>
+          // <span>KNOWN</span>
+          ) : (
+          // <div>HELLO {props.?.family_name}</div>
           <div>UNKNOWN</div>
         )
       }
@@ -62,19 +63,21 @@ export default function Home({profileData}) {
   );
 }
 
-// export const getServerSideProps = async () => {
-// // export async function getServerSideProps(){
-//   console.log("INDEX.JS  HI THIS IS GETSERVERSIDEPROPS");
-//   // console.log("SESSION??: ", session)
-//   const session = await getSession()
-//   const profileData = getProfileInfo(session)
+export const getServerSideProps = async (context) => {
+// export async function getServerSideProps(){
+  // console.log("INDEX.JS  HI THIS IS GETSERVERSIDEPROPS");
+  // console.log("SESSION??: ", session)
+  // const session = await getSession()
 
-//   return {
-//     props: {
-//       ...profileData,
-//     },
-//   };
-// };
+  const profileData = await getProfileInfo(context)
+  console.log("PROFILE DATA: ", profileData)
+
+  return {
+    props: {
+      ...profileData,
+    },
+  };
+};
 
 // {user: {…}, expires: "2021-06-16T00:01:04.213Z"}
 // expires: "2021-06-16T00:01:04.213Z"

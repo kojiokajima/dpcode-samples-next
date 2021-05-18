@@ -29,8 +29,8 @@ export default NextAuth({
       }
     },
   },
-  session: {
-    jwt: true,
-  },
-  debug: process.env.NODE_ENV === 'development' ? true : false,
+  // session: {
+  //   jwt: true,
+  // },
+  // debug: process.env.NODE_ENV === 'development' ? true : false,
 })

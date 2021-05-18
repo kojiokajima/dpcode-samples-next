@@ -79,18 +79,18 @@ const SamplePage1 = ({profileData}) => {
   );
 };
 
-export const getServerSideProps = async () => {
-  console.log("INDEX.JS  HI THIS IS GETSERVERSIDEPROPS");
-  // console.log("SESSION??: ", session)
-  const session = await getSession();
-  const profileData = getProfileInfo(session);
+// export const getServerSideProps = async () => {
+//   console.log("INDEX.JS  HI THIS IS GETSERVERSIDEPROPS");
+//   // console.log("SESSION??: ", session)
+//   const session = await getSession();
+//   const profileData = getProfileInfo(session);
 
-  return {
-    props: {
-      ...profileData,
-    },
-  };
-};
+//   return {
+//     props: {
+//       ...profileData,
+//     },
+//   };
+// };
 
 // export const getStaticProps = async () => {
 //   const coffee = await getRandomCoffee();

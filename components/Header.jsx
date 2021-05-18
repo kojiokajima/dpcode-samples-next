@@ -145,8 +145,8 @@ const Header = () => {
           </li>
           {
             session ?
-            // (<li onClick={() => signOut()}>
-            (<li onClick={() => signOut({redirect: false})}>
+            (<li onClick={() => signOut()}>
+            {/* (<li onClick={() => signOut({redirect: false})}> */}
               {/* <Button className={classes.btn}> */}
               SIGN OUT
               {/* </Button> */}
