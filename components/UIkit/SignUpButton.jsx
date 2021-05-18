@@ -21,9 +21,11 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #06C8A1",
     padding: "1.11vw",
     "&:hover ": {
-      color: "#FFF",
+      // color: "#FFF",
       border: "none",
-      backgroundColor: "#06C8A1",
+      // backgroundColor: "#06C8A1",
+      backgroundColor: "rgba(6, 200, 161, .2)",
+
     },
   },
   logo: {

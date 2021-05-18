@@ -9,6 +9,8 @@ import {
   MyContentContainer,
   MyButton,
 } from "../components/UIkit/index";
+import {useSession, getSession} from 'next-auth/client'
+import {getProfileInfo} from '../lib/test'
 
 import { getRandomCoffee } from "../lib/test";
 
@@ -42,7 +44,7 @@ const useStyles = makeStyles({
   },
 });
 
-const SamplePage1 = (props) => {
+const SamplePage1 = ({profileData}) => {
   const classes = useStyles();
 
   return (
@@ -66,8 +68,28 @@ const SamplePage1 = (props) => {
       <div className={classes.temporary}>
         <MyButton label={"sample"} isContained={false} isExLarge={true} />
       </div>
+      {
+        profileData ? (
+          <span>ko</span>
+        ) : (
+          <div>UNKNOWN</div>
+        )
+      }
     </MyContainer>
   );
+};
+
+export const getServerSideProps = async () => {
+  console.log("INDEX.JS  HI THIS IS GETSERVERSIDEPROPS");
+  // console.log("SESSION??: ", session)
+  const session = await getSession();
+  const profileData = getProfileInfo(session);
+
+  return {
+    props: {
+      ...profileData,
+    },
+  };
 };
 
 // export const getStaticProps = async () => {

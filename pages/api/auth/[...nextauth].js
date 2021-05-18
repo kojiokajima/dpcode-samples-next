@@ -1,4 +1,5 @@
 import NextAuth from 'next-auth'
+import { session } from 'next-auth/client';
 import Providers from 'next-auth/providers'
 
 export default NextAuth({
@@ -10,6 +11,24 @@ export default NextAuth({
     }),
 
   ],
+  callbacks: {
+    async jwt(token, user, account, profile, isNewUser, session) {
+      console.log("HI THIS IS NEXT AUTH");
+      // Add access_token to the token right after signin
+      if (account?.accessToken) {
+        token.accessToken = account.accessToken
+      }
+      return token
+    },
+
+    async session(session, token) {
+      // console.log("TOKEN IN SESSION: ", token);
+      return {
+        ...session,
+        accessToken: token.accessToken
+      }
+    },
+  },
   session: {
     jwt: true,
   },
