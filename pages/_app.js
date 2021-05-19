@@ -33,6 +33,11 @@ function MyApp({ Component, pageProps }) {
             SAMPLE PAGE3
           </Button>
         </Link>
+        <Link href="/sample4">
+          <Button variant="contained" color="primary">
+            SAMPLE PAGE4
+          </Button>
+        </Link>
 
       </div>
     </Provider>
