@@ -7,16 +7,16 @@ import axios from "axios";
 
 export default function Home(props) {
   const [session, loading] = useSession();
-  console.log("INDEX.JS  SESSION: ", session);
+  console.log("INDEX.JS  PROPS: ", props);
 
-  useEffect(() => {
-    console.log("HELLO PROFILEDATA IS ", props)
+  // useEffect(() => {
+    // console.log("HELLO PROFILEDATA IS ", props)
     // if(profileData){
     //   console.log("INDEX.JS  PROFILE DATA: ", profileData);
     // } else {
     //   console.log("INDEX.JS  NONE");
     // }
-  }, [session])
+  // }, [session])
 
   // const getProfileData = async() => {
   //   const response = await axios.get(
