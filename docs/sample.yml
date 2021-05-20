@@ -1,0 +1,481 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: DPCOde Academy API
+  description: DPCOde Academy API
+
+servers:
+  - url: https://localhost:8000
+
+security:
+  - BasicAuth: []
+
+paths:
+  /user:
+    get:
+      tags:
+        - user
+      description: Get all students data.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+                example:
+                  - id: 1
+                    name: David Beckham
+                    birth: 2000/12/12
+                    email: student1@gmail.com
+                    phone: 1231231233
+                    address: Vancouver
+                  - id: 2
+                    name: Eric Cantona
+                    birth: 1990/11/11
+                    email: student2@gmail.com
+                    phone: 4564564567
+                    address: Tokyo
+
+  /user/{token}:
+    get:
+      tags:
+        - user
+      description: Get specific student data by token.
+      parameters:
+        - $ref: "#/components/parameters/PageLimit"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+              example:
+                id: 1
+                name: David Beckham
+                birth: 2000/12/12
+                email: student1@gmail.com
+                phone: 1231231233
+                address: Vancouver
+        default:
+          description: error occurred
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /students/{token}/courses:
+    get:
+      tags:
+        - user
+      description: Get courses of specific student has.
+      parameters:
+        - $ref: "#/components/parameters/PageLimit"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Course"
+                example:
+                  - id: 1
+                    name: Python
+                    duration: duration
+                    schedules:
+                      - 2021/05/10
+                      - 2021/05/11
+                      - 2021/05/12
+                    description: Python for beginners.
+                    image_path: /img/courses/card.jpg
+                    features:
+                      - 1
+                      - 2
+                      - 3
+                    level: Beginner
+                    prerequisites:
+                      - 1
+                      - 2
+                    price: 2000
+                    status: normal
+                  - id: 2
+                    name: Algorithm
+                    duration: duration
+                    schedules:
+                      - 2021/05/13
+                      - 2021/05/14
+                      - 2021/05/15
+                    description: Algorithm for intermediates.
+                    image_path: /img/courses/card.jpg
+                    features:
+                      - 1
+                    level: Intermediate
+                    prerequisites:
+                      - 1
+                      - 3
+                      - 5
+                    price: 3500
+                    status: hard
+        default:
+          description: error occurred
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /courses:
+    get:
+      tags:
+        - courses
+      description: Get all courses data.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Course"
+                example:
+                  - id: 1
+                    name: Python
+                    duration: duration
+                    schedules:
+                      - 2021/05/10
+                      - 2021/05/11
+                      - 2021/05/12
+                    description: Python for beginners.
+                    image_path: /img/courses/card.jpg
+                    features:
+                      - 1
+                      - 2
+                      - 3
+                    level: Beginner
+                    prerequisites:
+                      - 1
+                      - 2
+                    price: 2000
+                    status: normal
+                  - id: 2
+                    name: Algorithm
+                    duration: duration
+                    schedules:
+                      - 2021/05/13
+                      - 2021/05/14
+                      - 2021/05/15
+                    description: Algorithm for intermediates.
+                    image_path: /img/courses/card.jpg
+                    features:
+                      - 1
+                    level: Intermediate
+                    prerequisites:
+                      - 1
+                      - 3
+                      - 5
+                    price: 3500
+                    status: hard
+    post:
+      tags:
+        - courses
+      description: Create a new Course.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Course"
+            example:
+              name: Java
+              schedules:
+                - 2021/05/15
+                - 2021/05/16
+              description: Java fro beginners.
+              image_path: /img/courses/card.jpg
+              price: 2799
+              status: hard
+      responses:
+        200:
+          description: created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Course"
+
+  /courses/{id}:
+    get:
+      tags:
+        - courses
+      description: Get specific courses data by id.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Course"
+        default:
+          description: error occurred
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      tags:
+        - courses
+      description: Update specific course data by id.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Course"
+            example:
+              id: 3
+              name: Swift
+              schedules:
+                - 2021/05/17
+              description: Swift fro beginners.
+              image_path: /img/courses/card.jpg
+              price: 4000
+              status: normal
+      responses:
+        200:
+          description: updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Course"
+              example:
+                id: 3
+                name: Swift
+                schedules:
+                  - 2021/05/17
+                description: Swift fro beginners.
+                image_path: /img/courses/card.jpg
+                price: 4000
+                status: normal
+        default:
+          description: error occurred
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      tags:
+        - courses
+      description: Delete specific course data by id.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Course"
+            example:
+              id: 2
+      responses:
+        200:
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+              example:
+                id: 2
+        default:
+          description: error occurred
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  parameters:
+    PageLimit:
+      name: limit
+      in: query
+      description: Limits the number
+      schema:
+        type: integer
+
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: |
+            User's social account unique token id
+        first_name:
+          type: string
+          description: |
+            User's first name
+        last_name:
+          type: string
+          description: |
+            User's last name
+        image_path:
+          type: string
+          description: |
+            The path of a user's profile image
+        birth:
+          type: string
+          format: dd/mm/yyyy
+          description: |
+            User's birth day
+        email:
+          type: string
+          description: |
+            User's email
+        phone:
+          type: string
+          description: |
+            User's phone number
+        parent_first_name:
+          type: string
+          description: |
+            User's parents first name
+        parent_last_name:
+          type: string
+          description: |
+            User's parents last name
+        parent_email:
+          type: string
+          description: |
+            User's parents email
+        parent_phone:
+          type: string
+          description: |
+            User's parents phone number
+        type:
+          type: string
+          description: |
+            User's type<br>
+            Acceptable values are:
+            - student
+            - admin
+
+    Course:
+      type: object
+      properties:
+        id:
+          type: string
+          description: |
+            Unique course ID
+        name:
+          type: string
+          description: |
+            Course name
+        category:
+          type: string
+          description: |
+            Course category
+        status:
+          type: string
+          description: |
+            Course status<br>
+            Acceptable values are:
+            - archived - finished course
+            - active - now opening course
+            - inactive - future course
+        start_date:
+          type: string
+          format: dd/mm/yyyy
+          description: |
+            course start date
+        end_date:
+          type: string
+          format: dd/mm/yyyy
+          description: |
+            course end date
+        class_schedules:
+          type: array
+          items:
+            properties:
+              start_time:
+                type: string
+                format: dd/mm/yyyy
+              end_time:
+                type: string
+                format: dd/mm/yyyy
+          description: |
+            A list of class schedules including a start date and an end date of a class.
+        description:
+          type: string
+          description: |
+            A description of a course 
+        image_path:
+          type: string
+          description: |
+            A image path of a course
+        features:
+          type: array
+          items:
+            type: string
+          description: |
+            A list of features of a course
+        level:
+          type: string
+          description: |
+            The level of a course<br>
+            Acceptable values are:
+            - Beginner
+            - Intermediate
+            - Advanced
+        prerequisites:
+          type: array
+          items:
+            type: string
+          description: |
+             Courses, conditions, presimes, and status recommended to have before apply this course
+        length:
+          type: object
+          properties:
+            month:
+              type: number
+            weeks:
+              type: number
+            hours:
+              type: number
+          description: |
+            An object including course month, weeks, and hours
+        price:
+          type: object
+          properties:
+            $:
+              type: number
+            hours:
+              type: number
+            periodicity:
+              type: string
+          description: |
+            An object including course price, hours, and periodicity
+        available_schedules:
+          type: array
+          items:
+            type: string
+            format: dd/mm/yyyy
+          description:
+            A list of available course schedules
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Unexpected parameters received
+            code:
+              type: integer
+              minimum: 100
+              maximum: 600
+              example: 190
