@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import { Hero, Footer } from "../components/index";
-import { MyContainer, MyContentTitle, MyContentContainer, MyButton } from "../components/UIkit/index";
+import { Hero, Footer, Step1, Step2, Step3 } from "../components/index";
+import { MyContainer, MyContentTitle, MyContentContainer, MyButton, SignUpCardContainer } from "../components/UIkit/index";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
+    backgroundColor: "orange",
   },
   backButton: {
     marginRight: theme.spacing(1),
@@ -78,22 +79,15 @@ const sample4 = () => {
             <div>
               <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
               <div>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  className={classes.backButton}
-                >
-                  Back
-                </Button>
-                <Button variant="contained" color="primary" onClick={handleNext}>
-                  {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                </Button>
               </div>
             </div>
           )}
         </div>
       </div>
     </MyContentContainer>
+    <Step1 />
+    <Step2 />
+    <Step3 />
     </MyContainer>
   );
 };

@@ -8,8 +8,6 @@ import { makeStyles } from "@material-ui/core/styles";
 //  #D0FFF6
 // width*3,
 
-const dependencyStyle = {};
-
 const useStyles = makeStyles((theme) => ({
   root: ({ isLarge = false, isContained, isExLarge = false }) => {
     // console.log("isLarge: ", isLarge);
