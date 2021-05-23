@@ -16,6 +16,7 @@ export default NextAuth({
       console.log("-------------HI THIS IS NEXT AUTH-------------");
 
       if (account?.accessToken) {
+        console.log("ACCESS TOKEN EXISTS");
         token.accessToken = account.accessToken
         token.idToken = account.idToken
       }
