@@ -5,11 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prism": "./node_modules/.bin/prism mock"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
+    "@stoplight/prism-cli": "^3.3.7",
     "axios": "^0.21.1",
     "next": "10.2.0",
     "next-auth": "^3.23.0",

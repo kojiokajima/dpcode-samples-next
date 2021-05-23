@@ -7,6 +7,7 @@ import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import {getProfileInfo} from '../lib/auth'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,7 +40,7 @@ const getStepContent = (stepIndex) => {
   }
 }
 
-const sample4 = () => {
+const sample4 = (props) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
@@ -87,9 +88,36 @@ const sample4 = () => {
     </MyContentContainer>
     <Step1 />
     <Step2 />
+    {
+        props.username ? (
+          <div>HELLO {props.given_name}</div>
+          // <span>KNOWN</span>
+          ) : (
+          // <div>HELLO {props.?.family_name}</div>
+          <div>UNKNOWN</div>
+        )
+      }
     <Step3 />
     </MyContainer>
   );
 };
+
+
+
+export const getServerSideProps = async (context) => {
+  // export async function getServerSideProps(){
+    // console.log("INDEX.JS  HI THIS IS GETSERVERSIDEPROPS");
+    // console.log("SESSION??: ", session)
+    // const session = await getSession()
+  
+    const profileData = await getProfileInfo(context)
+    // console.log("PROFILE DATA: ", profileData)
+  
+    return {
+      props: {
+        ...profileData,
+      },
+    };
+  };
 
 export default sample4;

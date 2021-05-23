@@ -1,13 +1,13 @@
 import styles from "../styles/Home.module.css";
 import { signIn, signOut, useSession, getSession } from "next-auth/client";
 import { MyButton, SignUpButton } from "../components/UIkit/index";
-import { getProfileInfo } from "../lib/test";
+import { getProfileInfo } from "../lib/auth";
 import { useEffect } from "react";
 import axios from "axios";
 
 export default function Home(props) {
   const [session, loading] = useSession();
-  console.log("INDEX.JS  PROPS: ", props);
+  // console.log("INDEX.JS  PROPS: ", props);
 
   // useEffect(() => {
     // console.log("HELLO PROFILEDATA IS ", props)
@@ -70,7 +70,7 @@ export const getServerSideProps = async (context) => {
   // const session = await getSession()
 
   const profileData = await getProfileInfo(context)
-  console.log("PROFILE DATA: ", profileData)
+  // console.log("PROFILE DATA: ", profileData)
 
   return {
     props: {

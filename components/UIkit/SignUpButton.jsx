@@ -5,8 +5,9 @@ import {signIn} from 'next-auth/client'
 import Google from '../../assets/login/google.svg'
 import Facebook from '../../assets/login/facebook.svg'
 import LINE from '../../assets/login/line.svg'
+import KAKAO from '../../assets/login/kakao_talk.svg'
 // 26.67vw * 4.44vw
-// label, socialService(Google, Facebook, LINE)
+// label, socialService(Google, Facebook, LINE, Kakao)
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,6 +53,9 @@ const SignUpButton = (props) => {
       case "LINE":
       logo = LINE
       break;
+      case "KAKAO":
+      logo = KAKAO
+      break;
       default:
       logo = ""
       break;
@@ -60,11 +64,16 @@ const SignUpButton = (props) => {
   return (
     <Button
       className={classes.root}
-      onClick={() => signIn(
-        'cognito',
-        {callbackUrl: "http://localhost:3000/"},
-        {identity_provider: props.label}
-      )}
+      onClick={() => {
+        signIn(
+          'cognito',
+          // {callbackUrl: "http://localhost:3000/"},
+          // {callbackUrl: "http://localhost:3000/api/auth/callback/cognito"},
+          {},
+          {identity_provider: props.label}
+        )
+        // signIn()
+      }}
     >
       <img className={classes.logo} src={logo} alt="" />
       <div className={classes.text}>SIGN UP WITH {props.label}</div>

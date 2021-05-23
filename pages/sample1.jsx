@@ -10,9 +10,9 @@ import {
   MyButton,
 } from "../components/UIkit/index";
 import {useSession, getSession} from 'next-auth/client'
-import {getProfileInfo} from '../lib/test'
+import {getProfileInfo} from '../lib/auth'
 
-import { getRandomCoffee } from "../lib/test";
+import { getRandomCoffee } from "../lib/auth";
 
 // 1440 * 900
 // #28282A

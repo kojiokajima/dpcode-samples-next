@@ -13,10 +13,11 @@ export default NextAuth({
   ],
   callbacks: {
     async jwt(token, user, account, profile, isNewUser, session) {
-      console.log("HI THIS IS NEXT AUTH");
-      // Add access_token to the token right after signin
+      console.log("-------------HI THIS IS NEXT AUTH-------------");
+
       if (account?.accessToken) {
         token.accessToken = account.accessToken
+        token.idToken = account.idToken
       }
       return token
     },
@@ -25,12 +26,13 @@ export default NextAuth({
       // console.log("TOKEN IN SESSION: ", token);
       return {
         ...session,
-        accessToken: token.accessToken
+        accessToken: token.accessToken,
+        idToken: token.idToken,
       }
     },
   },
-  // session: {
-  //   jwt: true,
-  // },
+  session: {
+    jwt: true,
+  },
   // debug: process.env.NODE_ENV === 'development' ? true : false,
 })
