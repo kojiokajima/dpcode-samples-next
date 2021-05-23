@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Hero, Footer, Step1, Step2, Step3 } from "../components/index";
 import { MyContainer, MyContentTitle, MyContentContainer, MyButton, SignUpCardContainer } from "../components/UIkit/index";
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,6 +7,7 @@ import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import {useSession, getSession} from 'next-auth/client'
 import {getProfileInfo} from '../lib/auth'
 
 const useStyles = makeStyles((theme) => ({
@@ -44,6 +45,12 @@ const sample4 = (props) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
+  const [session] = useSession()
+
+  useEffect(() => {
+    console.log("SESSION IN CLIENT IS: ", session);
+  }, [])
+
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -88,12 +95,10 @@ const sample4 = (props) => {
     </MyContentContainer>
     <Step1 />
     <Step2 />
-    {
+      {
         props.username ? (
-          <div>HELLO {props.given_name}</div>
-          // <span>KNOWN</span>
+          <div>HELLO {props.sub}</div>
           ) : (
-          // <div>HELLO {props.?.family_name}</div>
           <div>UNKNOWN</div>
         )
       }
@@ -105,13 +110,8 @@ const sample4 = (props) => {
 
 
 export const getServerSideProps = async (context) => {
-  // export async function getServerSideProps(){
-    // console.log("INDEX.JS  HI THIS IS GETSERVERSIDEPROPS");
-    // console.log("SESSION??: ", session)
-    // const session = await getSession()
   
     const profileData = await getProfileInfo(context)
-    // console.log("PROFILE DATA: ", profileData)
   
     return {
       props: {

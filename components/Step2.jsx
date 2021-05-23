@@ -1,8 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {SignUpCardContainer, SignUpContentContainer, SignUpButton} from "./UIkit/index"
 import {makeStyles} from '@material-ui/core/styles'
-
-import {useSession} from 'next-auth/client'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -17,10 +15,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function Step2() {
-  const {session} = useSession()
 
-  console.log("Hey Yo Session Is: ", session);
+function Step2() {
+
   const classes = useStyles()
   return (
     <SignUpCardContainer title={"SIGN UP WITH SOCIAL MEDIA"}>
