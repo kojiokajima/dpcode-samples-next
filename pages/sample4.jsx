@@ -97,22 +97,19 @@ const sample4 = (props) => {
     <Step2 />
       {
         props.username ? (
-          <div>HELLO {props.sub}</div>
+          <div>HELLO {props.username}</div>
           ) : (
           <div>UNKNOWN</div>
         )
       }
-    <Step3 />
+    <Step3 userInfo={props} />
     </MyContainer>
   );
 };
 
-
-
 export const getServerSideProps = async (context) => {
-  
     const profileData = await getProfileInfo(context)
-  
+
     return {
       props: {
         ...profileData,

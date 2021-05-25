@@ -68,7 +68,6 @@ const SignUpButton = (props) => {
         signIn(
           'cognito',
           // {callbackUrl: "http://localhost:3000/"},
-          // {callbackUrl: "http://localhost:3000/api/auth/callback/cognito"},
           {},
           {identity_provider: props.label}
         )
