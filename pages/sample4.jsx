@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const getSteps = () => {
-  return ["Privacy Policy", "Sign up with Social Media", "Create your profile"];
+  return ["Privacy Policy", "Sign up with Social Media", "Input Your Information"];
 };
 
 const getStepContent = (stepIndex) => {
