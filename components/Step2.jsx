@@ -27,7 +27,6 @@ function Step2() {
           <SignUpButton label={"Google"} />
           <SignUpButton label={"LINE"} />
           <SignUpButton label={"KAKAO"} />
-          <SignUpButton label={""} />
         </div>
       </SignUpContentContainer>
     </SignUpCardContainer>

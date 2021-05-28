@@ -95,13 +95,13 @@ const sample4 = (props) => {
     </MyContentContainer>
     <Step1 />
     <Step2 />
-      {
+      {/* {
         props.username ? (
           <div>HELLO {props.username}</div>
           ) : (
           <div>UNKNOWN</div>
         )
-      }
+      } */}
     <Step3 userInfo={props} />
     </MyContainer>
   );

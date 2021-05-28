@@ -1,11 +1,11 @@
-import React from 'react'
-import {Button} from '@material-ui/core'
-import {makeStyles} from '@material-ui/core/styles'
-import {signIn} from 'next-auth/client'
-import Google from '../../assets/login/google.svg'
-import Facebook from '../../assets/login/facebook.svg'
-import LINE from '../../assets/login/line.svg'
-import KAKAO from '../../assets/login/kakao_talk.svg'
+import React from "react";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { signIn } from "next-auth/client";
+import Google from "../../assets/login/google.svg";
+import Facebook from "../../assets/login/facebook.svg";
+import LINE from "../../assets/login/line.svg";
+import KAKAO from "../../assets/login/kakao_talk.svg";
 // 26.67vw * 4.44vw
 // label, socialService(Google, Facebook, LINE, Kakao)
 
@@ -26,38 +26,38 @@ const useStyles = makeStyles((theme) => ({
       border: "none",
       // backgroundColor: "#06C8A1",
       backgroundColor: "rgba(6, 200, 161, .2)",
-
     },
   },
   logo: {
     height: "2.22vw",
   },
   text: {
+    fontFamily: "proxima-nova, sans-serif",
     display: "flex",
     // width: "20vw",
     width: "100%",
-    justifyContent: "center"
-  }
-}))
+    justifyContent: "center",
+  },
+}));
 
 const SignUpButton = (props) => {
-  const classes = useStyles()
-  let logo
+  const classes = useStyles();
+  let logo;
   switch (props.label) {
     case "Google":
-      logo = Google
+      logo = Google;
       break;
-      case "Facebook":
-      logo = Facebook
+    case "Facebook":
+      logo = Facebook;
       break;
-      case "LINE":
-      logo = LINE
+    case "LINE":
+      logo = LINE;
       break;
-      case "KAKAO":
-      logo = KAKAO
+    case "KAKAO":
+      logo = KAKAO;
       break;
-      default:
-      logo = ""
+    default:
+      logo = "";
       break;
   }
 
@@ -66,18 +66,18 @@ const SignUpButton = (props) => {
       className={classes.root}
       onClick={() => {
         signIn(
-          'cognito',
+          "cognito",
           // {callbackUrl: "http://localhost:3000/"},
           {},
-          {identity_provider: props.label}
-        )
+          { identity_provider: props.label }
+        );
         // signIn()
       }}
     >
       <img className={classes.logo} src={logo} alt="" />
       <div className={classes.text}>SIGN UP WITH {props.label}</div>
     </Button>
-  )
-}
+  );
+};
 
-export default SignUpButton
+export default SignUpButton;
