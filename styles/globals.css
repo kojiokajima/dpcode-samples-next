@@ -1,6 +1,32 @@
 @font-face {
 	font-family: 'proxima-nova';
-    src: url('../public/proximaNova-Thin.otf') format('truetype');
+    src: url('../public/fonts/proximaNova-Thin.otf') format('truetype');
+    font-weight: 100;
+}
+@font-face {
+	font-family: 'proxima-nova';
+    src: url('../public/fonts/proximaNova-Light.otf') format('truetype');
+    font-weight: 300;
+}
+@font-face {
+	font-family: 'proxima-nova';
+    src: url('../public/fonts/proximaNova-Medium.otf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+	font-family: 'proxima-nova';
+    src: url('../public/fonts/proximaNova-Regular.otf') format('truetype');
+    font-weight: 500;
+}
+@font-face {
+	font-family: 'proxima-nova';
+    src: url('../public/fonts/proximaNova-Semibold.otf') format('truetype');
+    font-weight: 600;
+}
+@font-face {
+	font-family: 'proxima-nova';
+    src: url('../public/fonts/proximaNova-Bold.otf') format('truetype');
+    font-weight: 700;
 }
 
 *,

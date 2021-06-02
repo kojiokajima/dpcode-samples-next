@@ -70,7 +70,7 @@ const session = {
 // email --> Email
 // first_name --> Given Name
 // last_name --> Family Name
-const facebook = {
+const facebook2 = {
   sub: '43293591-92c6-420f-b88e-90c6a7b5a2dc',
   email_verified: 'false',
   given_name: 'Koji',
@@ -85,7 +85,7 @@ const facebook = {
 // diven_name --> Givem Name
 // family_name --> Family Name
 // sub --> Username
-const google = {
+const google3 = {
   sub: '0be75875-aa2f-4695-884b-e858e44acfdd',
   email_verified: 'false',
   phone_number_verified: 'false',
@@ -96,11 +96,22 @@ const google = {
 }
 
 
-const line = {
+const line2 = {
   sub: 'ceaaae17-b75e-4939-a99f-8a7fd99b5ddf',
   email_verified: 'false',
   username: 'line_u751e27524d2bd90373d97d7ad5a0b425'
 }
 
 
-// const kaka0 =
+const str = [1, 2, 3]
+const func = (num) => {
+  // for (i = 0; i < str.length; i++) {
+  //   str[i] = str[i]+3
+  // }
+  const str2 = str.map(val => val+3)
+  console.log(str2);
+}
+
+func(str)
+
+console.log(str)

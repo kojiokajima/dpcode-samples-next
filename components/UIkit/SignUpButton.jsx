@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     fontFamily: "proxima-nova, sans-serif",
+    // fontWeight: "300",
     display: "flex",
     // width: "20vw",
     width: "100%",
