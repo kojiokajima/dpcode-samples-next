@@ -8,7 +8,7 @@ import {
 } from "../components/UIkit/index";
 
 const SamplePage2 = () => {
-  // window.onscroll　= () => {
+  // window.onscroll　= () => { for test
   //   console.log("YOYOYO");
   // }
   // useEffect(() => {
