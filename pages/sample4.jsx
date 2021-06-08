@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import {useSession, getSession} from 'next-auth/client'
 import {getProfileInfo} from '../lib/auth'
-
+// for test from branch
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
