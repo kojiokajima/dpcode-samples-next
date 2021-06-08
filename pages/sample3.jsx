@@ -4,7 +4,7 @@ import {Plans} from '../components/index'
 import {MyContainer, MyContentContainer, MyContentTitle} from '../components/UIkit/index'
 
 const SamplePage3 = () => {
-
+// for test
   return (
     <MyContainer>
       <Hero />

@@ -14,7 +14,7 @@ import {getProfileInfo} from '../lib/auth'
 
 import { getRandomCoffee } from "../lib/auth";
 
-// 1440 * 900
+// 1440 * 900 for test
 // #28282A
 // #06C8A1
 // 3blocks(6.6667%) & 1block(3.23%)
