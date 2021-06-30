@@ -1,0 +1,25 @@
+.root {
+  & .stepper {
+    color: yellow;
+  }
+
+}
+
+.stepper {
+  color: red !important;
+
+  & div {
+    color: blue;
+    & span {
+      color: aqua;
+    }
+  }
+}
+
+.step {
+  color: green;
+}
+
+.stepLabel {
+  color: purple;
+}

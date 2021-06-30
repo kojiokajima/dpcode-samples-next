@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const getSteps = () => {
-  return ["Privacy Policy", "Sign up with Social Media", "Input Your Information"];
+  return ["Privacy Policy", "Sign up with Social Media"];
 };
 
 const getStepContent = (stepIndex) => {
@@ -34,8 +34,6 @@ const getStepContent = (stepIndex) => {
       return 'Select campaign settings...';
     case 1:
       return 'What is an ad group anyways?';
-    case 2:
-      return 'This is the bit I really care about!';
     default:
       return 'Unknown stepIndex';
   }
