@@ -10,12 +10,12 @@ export default function Home(props) {
   // console.log("INDEX.JS  PROPS: ", props);
 
   // useEffect(() => {
-    // console.log("HELLO PROFILEDATA IS ", props)
-    // if(profileData){
-    //   console.log("INDEX.JS  PROFILE DATA: ", profileData);
-    // } else {
-    //   console.log("INDEX.JS  NONE");
-    // }
+  // console.log("HELLO PROFILEDATA IS ", props)
+  // if(profileData){
+  //   console.log("INDEX.JS  PROFILE DATA: ", profileData);
+  // } else {
+  //   console.log("INDEX.JS  NONE");
+  // }
   // }, [session])
 
   // const getProfileData = async() => {
@@ -35,11 +35,14 @@ export default function Home(props) {
   //   if (session) {
   //     console.log("IN IF");
   //     console.log("SESSION IS: ", session);
-      
+
   //     // const data = getProfileData()
   //     getProfileData()
   //   }
   // }, [session]);
+  console.log("YO: ", process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID);
+  console.log("YO: ", process.env.NEXT_PUBLIC_COGNITO_CLIENT_SECRET);
+  console.log("YO: ", process.env.NEXT_PUBLIC_COGNITO_DOMAIN);
 
   return (
     <div className={styles.container}>
@@ -50,26 +53,24 @@ export default function Home(props) {
       <br />
       <br />
       <SignUpButton label={"LINE"} />
-      {
-        props.username ? (
-          <div>HELLO {props.given_name}</div>
-          // <span>KNOWN</span>
-          ) : (
-          // <div>HELLO {props.?.family_name}</div>
-          <div>UNKNOWN</div>
-        )
-      }
+      {props.username ? (
+        <div>HELLO {props.given_name}</div>
+      ) : (
+        // <span>KNOWN</span>
+        // <div>HELLO {props.?.family_name}</div>
+        <div>UNKNOWN</div>
+      )}
     </div>
   );
 }
 
 export const getServerSideProps = async (context) => {
-// export async function getServerSideProps(){
+  // export async function getServerSideProps(){
   // console.log("INDEX.JS  HI THIS IS GETSERVERSIDEPROPS");
   // console.log("SESSION??: ", session)
   // const session = await getSession()
 
-  const profileData = await getProfileInfo(context)
+  const profileData = await getProfileInfo(context);
   // console.log("PROFILE DATA: ", profileData)
 
   return {
